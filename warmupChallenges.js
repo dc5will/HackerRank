@@ -1,5 +1,5 @@
 /* HACK: Sock Merchant - John works at a clothing store. He has a large pile of socks that he must pair by color for sale. Given an array of integers representing the color of each sock, determine how many pairs of socks with matching colors there are. For example, there are  socks with colors. There is one pair of color and one of color . There are three odd socks left, one of each color. The number of pairs is.
-*/
+ */
 
 // set variable for count, iterate through array and use find method to increment count
 
@@ -68,7 +68,7 @@ function sockMerchant3(n, ar) {
 console.log(sockMerchant1(9, [10, 20, 20, 10, 10, 30, 50, 10, 20])); // returns 3
 
 /* HACK: Counting Valleys - Gary is an avid hiker. He tracks his hikes meticulously, paying close attention to small details like topography. During his last hike he took exactly  steps. For every step he took, he noted if it was an uphill, , or a downhill,  step. Gary's hikes start and end at sea level and each step up or down represents a  unit change in altitude. We define the following terms: A mountain is a sequence of consecutive steps above sea level, starting with a step up from sea level and ending with a step down to sea level. A valley is a sequence of consecutive steps below sea level, starting with a step down from sea level and ending with a step up to sea level.
-*/
+ */
 
 // Set variable for valley as counter. Convert input string into array. loop through array with condition that if current item & next item is 'D' then increase valley count, increment past 3rd item and finish iterating through the steps. return count at end.
 
@@ -134,14 +134,14 @@ For each game, Emma will get an array of clouds numbered  if they are safe or  i
 function jumpingOnClouds(c) {
   let count = 0;
   for (let i = 0; i < c.length; i++) {
-    console.log('steps =', c[i], c[i+1], 'count =', count);
-    if (c[i] === 0 && c[i+1] === 1) {
+    console.log("steps =", c[i], c[i + 1], "count =", count);
+    if (c[i] === 0 && c[i + 1] === 1) {
       count++;
       i++;
-    } else if (c[i] === 0 && c[i+1] === 0 && c[i+2] === 0) {
+    } else if (c[i] === 0 && c[i + 1] === 0 && c[i + 2] === 0) {
       count++;
-      i++
-    } else if (c[i] === 0 && c[i+1] === 0) {
+      i++;
+    } else if (c[i] === 0 && c[i + 1] === 0) {
       count++;
     }
   }
@@ -152,7 +152,7 @@ function jumpingOnClouds(c) {
 function jumpingOnClouds1(c) {
   let count = -1;
   for (let i = 0; i < c.length; i++, count++) {
-    if (i < c.length-2 && c[i+2] == 0) {
+    if (i < c.length - 2 && c[i + 2] == 0) {
       i++;
     }
   }
@@ -171,7 +171,7 @@ function jumpingOnClouds2(c) {
 function jumpingOnClouds3(c) {
   let jumps = 0;
   for (let i = 0; i < c.length - 1; jumps++) {
-    i += (c[i+2] === 0) ? 2 : 1;
+    i += c[i + 2] === 0 ? 2 : 1;
   }
   return jumps;
 }
@@ -197,17 +197,49 @@ function repeatedString(s, n) {
   let fraction = Math.floor(n / s.length);
 
   for (let i = 0; i < s.length; i++) {
-    if (s[i] === 'a') {
+    if (s[i] === "a") {
       count++;
     }
   }
   count = count * fraction;
   for (let i = 0; i < remainder; i++) {
-    if (s[i] === 'a') {
+    if (s[i] === "a") {
       count++;
     }
   }
   return count;
 }
 
-console.log(repeatedString('a', 100))
+// REVIEW: Better solutions
+function repeatedString1(s, n) {
+  let c = 0,
+    ca = 0,
+    r = n % s.length;
+
+  for (let i = s.length; i-- > 0; ) {
+    if (s.charAt(i) == "a") {
+      ++c;
+
+      if (i < r) ++ca;
+    }
+  }
+
+  return ((n - r) / s.length) * c + ca;
+}
+
+function repeatedString2(s, n) {
+  return (
+    (s.match(/a/g) || []).length * Math.floor(n / s.length) +
+    (s.substring(0, n % s.length).match(/a/g) || []).length
+  );
+}
+
+function repeatedString3(s, n) {
+  let occurances = s.split("a").length - 1;
+  let max = Math.floor(n / s.length);
+  let repeats = occurances * max;
+  repeats += s.slice(0, n % s.length).split("a").length - 1;
+  return repeats;
+}
+
+console.log(repeatedString("a", 100));
