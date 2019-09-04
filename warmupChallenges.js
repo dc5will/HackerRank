@@ -192,15 +192,22 @@ n: the number of characters to consider
 // take given string and repeat up to the length n. set count variable for 'a'. Then iterate through string and find all instances of 'a' and return the count.
 
 function repeatedString(s, n) {
-  let newStr = s.repeat(n).slice(0, n)
   let count = 0;
-  console.log(newStr);
-  for (let i = 0; i < newStr.length; i++) {
-    if (newStr[i] === 'a') {
+  let remainder = n % s.length;
+  let fraction = Math.floor(n / s.length);
+
+  for (let i = 0; i < s.length; i++) {
+    if (s[i] === 'a') {
+      count++;
+    }
+  }
+  count = count * fraction;
+  for (let i = 0; i < remainder; i++) {
+    if (s[i] === 'a') {
       count++;
     }
   }
   return count;
 }
 
-console.log(repeatedString('aba', 10))
+console.log(repeatedString('a', 100))
