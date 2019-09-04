@@ -1,4 +1,5 @@
-// HACK: Sock Merchant - John works at a clothing store. He has a large pile of socks that he must pair by color for sale. Given an array of integers representing the color of each sock, determine how many pairs of socks with matching colors there are. For example, there are  socks with colors. There is one pair of color and one of color . There are three odd socks left, one of each color. The number of pairs is.
+/* HACK: Sock Merchant - John works at a clothing store. He has a large pile of socks that he must pair by color for sale. Given an array of integers representing the color of each sock, determine how many pairs of socks with matching colors there are. For example, there are  socks with colors. There is one pair of color and one of color . There are three odd socks left, one of each color. The number of pairs is.
+*/
 
 // set variable for count, iterate through array and use find method to increment count
 
@@ -66,9 +67,10 @@ function sockMerchant3(n, ar) {
 
 console.log(sockMerchant1(9, [10, 20, 20, 10, 10, 30, 50, 10, 20])); // returns 3
 
-// HACK: Counting Valleys - Gary is an avid hiker. He tracks his hikes meticulously, paying close attention to small details like topography. During his last hike he took exactly  steps. For every step he took, he noted if it was an uphill, , or a downhill,  step. Gary's hikes start and end at sea level and each step up or down represents a  unit change in altitude. We define the following terms: A mountain is a sequence of consecutive steps above sea level, starting with a step up from sea level and ending with a step down to sea level. A valley is a sequence of consecutive steps below sea level, starting with a step down from sea level and ending with a step up to sea level.
+/* HACK: Counting Valleys - Gary is an avid hiker. He tracks his hikes meticulously, paying close attention to small details like topography. During his last hike he took exactly  steps. For every step he took, he noted if it was an uphill, , or a downhill,  step. Gary's hikes start and end at sea level and each step up or down represents a  unit change in altitude. We define the following terms: A mountain is a sequence of consecutive steps above sea level, starting with a step up from sea level and ending with a step down to sea level. A valley is a sequence of consecutive steps below sea level, starting with a step down from sea level and ending with a step up to sea level.
+*/
 
-// Set variable for valley as counter. Convert input string into array. loop through array with condition that if current item & next item is 'D' then increase valley count, increment past 3rd item and finish iterating through the steps. return count at end
+// Set variable for valley as counter. Convert input string into array. loop through array with condition that if current item & next item is 'D' then increase valley count, increment past 3rd item and finish iterating through the steps. return count at end.
 
 function countingValleys(n, s) {
   let valley = 0; // consecutive Ds
@@ -122,11 +124,12 @@ function countingValleys2(n, s) {
 
 console.log(countingValleys(8, "UDDDUDUU")); // returns 1
 
-// HACK: Jumping on the Clouds - Emma is playing a new mobile game that starts with consecutively numbered clouds. Some of the clouds are thunderheads and others are cumulus. She can jump on any cumulus cloud having a number that is equal to the number of the current cloud plus  or . She must avoid the thunderheads. Determine the minimum number of jumps it will take Emma to jump from her starting postion to the last cloud. It is always possible to win the game.
+/* HACK: Jumping on the Clouds - Emma is playing a new mobile game that starts with consecutively numbered clouds. Some of the clouds are thunderheads and others are cumulus. She can jump on any cumulus cloud having a number that is equal to the number of the current cloud plus  or . She must avoid the thunderheads. Determine the minimum number of jumps it will take Emma to jump from her starting postion to the last cloud. It is always possible to win the game.
 
-// For each game, Emma will get an array of clouds numbered  if they are safe or  if they must be avoided. For example, indexed from . The number on each cloud is its index in the list so she must avoid the clouds at indexes  and . She could follow the following two paths:  or . The first path takes  jumps while the second takes .
+For each game, Emma will get an array of clouds numbered  if they are safe or  if they must be avoided. For example, indexed from . The number on each cloud is its index in the list so she must avoid the clouds at indexes  and . She could follow the following two paths:  or . The first path takes  jumps while the second takes .
 
-// 0 = safe, 1 = avoid. set count variable. iterate array with condition that if arr[i] === 0 then i++
+0 = safe, 1 = avoid. set count variable. iterate array with condition that if arr[i] === 0 then i++
+*/
 
 function jumpingOnClouds(c) {
   let count = 0;
@@ -175,3 +178,29 @@ function jumpingOnClouds3(c) {
 
 console.log(jumpingOnClouds([0, 0, 1, 0, 0, 1, 0])); // returns 4
 console.log(jumpingOnClouds([0, 0, 0, 1, 0, 0])); // returns 3
+
+/* HACK: Repeated String - Lilah has a string, , of lowercase English letters that she repeated infinitely many times. Given an integer, , find and print the number of letter a's in the first letters of Lilah's infinite string.
+
+Complete the repeatedString function in the editor below. It should return an integer representing the number of occurrences of a in the prefix of length  in the infinitely repeating string.
+
+repeatedString has the following parameter(s):
+
+s: a string to repeat
+n: the number of characters to consider
+*/
+
+// take given string and repeat up to the length n. set count variable for 'a'. Then iterate through string and find all instances of 'a' and return the count.
+
+function repeatedString(s, n) {
+  let newStr = s.repeat(n).slice(0, n)
+  let count = 0;
+  console.log(newStr);
+  for (let i = 0; i < newStr.length; i++) {
+    if (newStr[i] === 'a') {
+      count++;
+    }
+  }
+  return count;
+}
+
+console.log(repeatedString('aba', 10))
