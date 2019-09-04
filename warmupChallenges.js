@@ -129,7 +129,7 @@ console.log(countingValleys(8, "UDDDUDUU")); // returns 1
 // 0 = safe, 1 = avoid. set count variable. iterate array with condition that if arr[i] === 0 then i++
 
 function jumpingOnClouds(c) {
-  let count = 1;
+  let count = 0;
   for (let i = 0; i < c.length; i++) {
     console.log('steps =', c[i], c[i+1], 'count =', count);
     if (c[i] === 0 && c[i+1] === 1) {
@@ -140,11 +140,37 @@ function jumpingOnClouds(c) {
       i++
     } else if (c[i] === 0 && c[i+1] === 0) {
       count++;
-    } else {
-      count--;
     }
   }
   return count;
+}
+
+// REVIEW: Better Solutions
+function jumpingOnClouds1(c) {
+  let count = -1;
+  for (let i = 0; i < c.length; i++, count++) {
+    if (i < c.length-2 && c[i+2] == 0) {
+      i++;
+    }
+  }
+  return count;
+}
+
+function jumpingOnClouds2(c) {
+  let jumps = 0;
+  for (let i = 0; i < c.length; i++) {
+    c[i + 2] === 0 ? i++ : null;
+    jumps++;
+  }
+  return jumps - 1;
+}
+
+function jumpingOnClouds3(c) {
+  let jumps = 0;
+  for (let i = 0; i < c.length - 1; jumps++) {
+    i += (c[i+2] === 0) ? 2 : 1;
+  }
+  return jumps;
 }
 
 console.log(jumpingOnClouds([0, 0, 1, 0, 0, 1, 0])); // returns 4
