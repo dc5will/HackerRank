@@ -30,4 +30,18 @@ function rotLeft(a, d) {
   return tempArray;
 }
 
+// REVIEW: Better solution
+function rotLeft1(a, d) {
+  return a.concat(a.splice(0,d).join(' '));
+}
+
+function rotLeft2(a, d) {
+  while (d--) {
+    a.push(a.shift());
+  } 
+  return a;
+}
+
+
+
 console.log(rotLeft([1,2,3,4,5], 4)) // returns 5 1 2 3 4
