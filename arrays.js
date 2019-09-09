@@ -2,8 +2,17 @@
 
 // HACK: 2D Array - Complete the function hourglassSum in the editor below. It should return an integer, the maximum hourglass sum in the array. 
 
-function hourglassSum(arr) {
+// do a nested for loop. declare variable for count. have condition to start when array[i][j] !== 0. Then have function to sum up integer values in hour glass shape. 
 
+function hourglassSum(arr) {
+  let count = 0;
+  for (let i = 0; i < arr.length; i++) {
+    console.log(arr[i])
+    for (let j = 0; j < arr[i].length; j++) {
+      console.log('[i][j]', arr[i][j])
+    }
+  }
+  return arr;
 }
 
 console.log(hourglassSum(
@@ -41,7 +50,5 @@ function rotLeft2(a, d) {
   } 
   return a;
 }
-
-
 
 console.log(rotLeft([1,2,3,4,5], 4)) // returns 5 1 2 3 4
