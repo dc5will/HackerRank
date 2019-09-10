@@ -5,14 +5,21 @@
 // do a nested for loop. declare variable for count. have condition to start when array[i][j] !== 0. Then have function to sum up integer values in hour glass shape. 
 
 function hourglassSum(arr) {
-  let count = 0;
-  for (let i = 0; i < arr.length; i++) {
-    console.log(arr[i])
-    for (let j = 0; j < arr[i].length; j++) {
-      console.log('[i][j]', arr[i][j])
+  let maxSum;
+  for (let i = 0; i < arr.length - 2; i++) {
+    for (let j = 0; j < arr[i].length - 2; j++) {
+      let sum =
+        arr[i][j] +
+        arr[i][j + 1] +
+        arr[i][j + 2] +
+        arr[i + 1][j + 1] +
+        arr[i + 2][j] +
+        arr[i + 2][j + 1] +
+        arr[i + 2][j + 2];
+      maxSum = typeof maxSum !== "undefined" && sum < maxSum ? maxSum : sum;
     }
   }
-  return arr;
+  return maxSum;
 }
 
 console.log(hourglassSum(
@@ -52,3 +59,4 @@ function rotLeft2(a, d) {
 }
 
 console.log(rotLeft([1,2,3,4,5], 4)) // returns 5 1 2 3 4
+
