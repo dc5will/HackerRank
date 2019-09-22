@@ -64,4 +64,13 @@ function getGrade(score) {
   return grade;
 }
 
+// REVIEW: More Elegant Solutions
+function getGrade1(score) {
+  return 'FEDCBA'[parseInt((score > 0 ? score - 1 : 0) / 5)];
+}
+
+function getGrade2(score) {
+  return 'FFEDCBA'[Math.ceil(score/5.0)];
+}
+
 console.log(getGrade(11)) // returns D;
