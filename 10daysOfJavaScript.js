@@ -98,6 +98,30 @@ function vowelsAndConsonants(s) {
   }
 }
 
+// REVIEW: Better Solution - Only loops through once
+function vowelsAndConsonants1(s) {
+  const vowels = 'aeiou';
+  let consonants = '';
+
+  for (let i = 0; i < s.length; i++) {
+    if (vowels.includes(s[i])) {
+      console.log(s[i]);
+    } else {
+      consonants += s[i] + '\n';
+    }
+  }
+  console.log(consonants.trim());
+}
+
+function vowelsAndConsonants2(s) {
+  const vowels = "aeiou";
+  let cons = "";
+  for (let i = 0; i < s.length; i++) {
+      vowels.includes(s[i]) ? console.log(s[i]) : cons = cons.concat(s[i] + '\n');
+  }
+  console.log(cons);
+}
+
 console.log(vowelsAndConsonants('javascriptloops')) 
 /* returns 
 a
