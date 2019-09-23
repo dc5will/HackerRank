@@ -44,33 +44,75 @@ If 0 < score <= 5, then grade = F.
 function getGrade(score) {
   let grade;
   if (score > 25 && score <= 30) {
-    grade = 'A';
+    grade = "A";
   }
   if (score > 20 && score <= 25) {
-    grade = 'B';
+    grade = "B";
   }
   if (score > 15 && score <= 20) {
-    grade = 'C';
+    grade = "C";
   }
   if (score > 10 && score <= 15) {
-    grade = 'D';
+    grade = "D";
   }
   if (score > 5 && score <= 10) {
-    grade = 'E';
+    grade = "E";
   }
   if (score > 0 && score <= 5) {
-    grade = 'F';
+    grade = "F";
   }
   return grade;
 }
 
 // REVIEW: More Elegant Solutions
 function getGrade1(score) {
-  return 'FEDCBA'[parseInt((score > 0 ? score - 1 : 0) / 5)];
+  return "FEDCBA"[parseInt((score > 0 ? score - 1 : 0) / 5)];
 }
 
 function getGrade2(score) {
-  return 'FFEDCBA'[Math.ceil(score/5.0)];
+  return "FFEDCBA"[Math.ceil(score / 5.0)];
 }
 
-console.log(getGrade(11)) // returns D;
+console.log(getGrade(11)); // returns D;
+
+/* HACK: Loops 
+Complete the vowelsAndConsonants function in the editor below. It has one parameter, a string, s , consisting of lowercase English alphabetic letters (i.e., a through z). The function must do the following:
+
+First, print each vowel in s on a new line. The English vowels are a, e, i, o, and u, and each vowel must be printed in the same order as it appeared in s.
+Second, print each consonant (i.e., non-vowel) in s on a new line in the same order as it appeared in s.
+*/
+
+// create array for vowels, loop through s and check for vowels. console.log item if vowel. loop through again and only log items that arent vowels. 
+
+function vowelsAndConsonants(s) {
+  let vowels = ["a", "e", "i", "o", "u"];
+  for (let vowel of s) { // log out vowels
+    if (vowels.includes(vowel)) {
+      console.log(vowel);
+    }
+  }
+  for (let consonant of s) {
+    if (!vowels.includes(consonant)) {
+      console.log(consonant);
+    }
+  }
+}
+
+console.log(vowelsAndConsonants('javascriptloops')) 
+/* returns 
+a
+a
+i
+o
+o
+j
+v
+s
+c
+r
+p
+t
+l
+p
+s
+*/
