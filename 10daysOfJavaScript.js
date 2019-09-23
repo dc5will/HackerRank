@@ -155,9 +155,51 @@ Hint: You can get the letter at some index i in s using the syntax s[i] or s.cha
 
 function getLetter(s) {
   let letter = s[0];
-  console.log(letter);
+  switch(letter) {
+    case 'a':
+    case 'e':
+    case 'i':
+    case 'o':
+    case 'u':
+      return 'A';
+    case 'b':
+    case 'c':
+    case 'd':
+    case 'f':
+    case 'g':
+      return 'B';
+    case 'h':
+    case 'j':
+    case 'k':
+    case 'l':
+    case 'm':
+      return 'C';
+    default: 
+      return 'D';
+  }
+}
 
+// REVIEW: Better solutions
+function getLetter1(s) {
+  let letter;
+  // Write your code here
+  switch (true) {
+      case 'aeiou'.includes(s[0]):
+          letter = 'A';
+          break;
+      case 'bcdfg'.includes(s[0]):
+          letter = 'B';
+          break;
+      case 'hjklm'.includes(s[0]):
+          letter = 'C';
+          break;
+      case 'npqrstvwxyz'.includes(s[0]):
+          letter = 'D';
+          break;
+  }
   return letter;
 }
+
+let getLetter2 = s => 'DABC'[Number.parseInt(('aeioubcdfghjklm'.indexOf(s[0])/5)+1)]
 
 console.log(getLetter('adfgt')) // return A
