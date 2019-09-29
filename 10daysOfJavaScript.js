@@ -203,3 +203,17 @@ function getLetter1(s) {
 let getLetter2 = s => 'DABC'[Number.parseInt(('aeioubcdfghjklm'.indexOf(s[0])/5)+1)]
 
 console.log(getLetter('adfgt')) // return A
+
+// HACK: Arrays - Complete the getSecondLargest function in the editor below. It has one parameter: an array, num ,of n numbers. The function must find and return the second largest number in nums.
+
+// Initial approach: remove duplicates with Set and sort array in ascending order using sort method. return item at index.length - 2
+
+function getSecondLargest(nums) {
+  let arr = Array.from(new Set(nums));
+  let sortedArr = arr.sort((a,b) => {
+    return a - b;
+  })
+  return sortedArr[sortedArr.length-2]
+}
+
+console.log(getSecondLargest([2,3,6,6,5])) // returns 5
