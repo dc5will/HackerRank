@@ -216,4 +216,26 @@ function getSecondLargest(nums) {
   return sortedArr[sortedArr.length-2]
 }
 
-console.log(getSecondLargest([2,3,6,6,5])) // returns 5
+// REVIEW: Alternative solutions
+function getSecondLargest1(nums) { // O(n)
+  let first = nums[0];
+  let second;
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] > first) {
+      second = first;
+      first = nums[i];
+      // console.log('second',second)
+      // console.log('first',first)
+    }
+    if (nums[i] > second && nums[i] < first) {
+      second = nums[i];
+    }
+  }
+  return second;
+}
+
+function getSecondLargest2(nums) {
+  return [...new Set(nums)].sort((a,b) => b-a)[1];
+}
+
+console.log(getSecondLargest1([2,3,6,6,5])) // returns 5
