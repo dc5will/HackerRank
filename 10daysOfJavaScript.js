@@ -354,4 +354,13 @@ function Rectangle(a,b) {
   }
 }
 
+// REVIEW: Alternative Solutions
+function Rectangle(a,b) {
+  // NOTE: In JS, you can add properties to objects whenever you want. There's no need to define a length or width prop in advance. It is created when you assign it. 
+  this.length = a;
+  this.width = b;
+  this.area = a * b;
+  this.perimeter = 2*(a + b);
+}
+
 console.log(Rectangle(4,5)) // 18, 20
