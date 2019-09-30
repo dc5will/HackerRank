@@ -263,5 +263,16 @@ function reverseString(s) {
   }
 }
 
+// REVIEW: Alternative Solutions
+function reverseString1(s) {
+  try {
+    s = s.split('').reverse().join('');
+  } catch(e) {
+    console.log(e.message);
+  } finally {
+    console.log(s);
+  }
+}
+
 console.log(reverseString("1234")) // returns 4321
 console.log(reverseString(Number(1234))) // throws error
