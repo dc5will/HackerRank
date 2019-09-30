@@ -345,22 +345,22 @@ perimeter: This value is equal to 2 * (a+b)
 area: This value is equal to a*b
 */
 
-function Rectangle(a,b) {
+function Rectangle(a, b) {
   return {
     length: a,
     width: b,
     perimeter: 2 * (a + b),
-    area: a*b
-  }
+    area: a * b
+  };
 }
 
 // REVIEW: Alternative Solutions
-function Rectangle(a,b) {
-  // NOTE: In JS, you can add properties to objects whenever you want. There's no need to define a length or width prop in advance. It is created when you assign it. 
+function Rectangle(a, b) {
+  // NOTE: In JS, you can add properties to objects whenever you want. There's no need to define a length or width prop in advance. It is created when you assign it.
   this.length = a;
   this.width = b;
   this.area = a * b;
-  this.perimeter = 2*(a + b);
+  this.perimeter = 2 * (a + b);
 }
 
 // FIXME: console.log(Rectangle(4,5)) // 18, 20
@@ -381,29 +381,31 @@ function getCount(objects) {
 
 // REVIEW: Alternative solutions
 function getCount1(objects) {
-  return objects.filter(function(o){return o.x==o.y}).length
+  return objects.filter(function(o) {
+    return o.x == o.y;
+  }).length;
 }
 
-const getCount2 = objects => objects.filter(o => o.x==o.y).length;
+const getCount2 = objects => objects.filter(o => o.x == o.y).length;
 
 function getCount3(objects) {
   let count = 0;
   for (let o of objects) {
-    count += (o.x === o.y);
+    count += o.x === o.y;
   }
   return count;
 }
 
-// array of objects used for getCount problem 
+// array of objects used for getCount problem
 const objects = [
-  {x:1, y:1},
-  {x:2, y:3},
-  {x:3, y:3},
-  {x:3, y:4},
-  {x:4, y:5}
-]
+  { x: 1, y: 1 },
+  { x: 2, y: 3 },
+  { x: 3, y: 3 },
+  { x: 3, y: 4 },
+  { x: 4, y: 5 }
+];
 
-console.log(getCount(objects))
+console.log(getCount(objects));
 
 /* HACK: Classes - Create a Polygon class that has the following properties:
 A constructor that takes an array of integer values describing the lengths of the polygon's sides.
@@ -414,7 +416,7 @@ Locked code in the editor tests the Polygon constructor and the perimeter method
 class Polygon {
   // constructor that takes an array of integer values describing the length of polygon sides
   constructor(sides) {
-    this.sides = sides
+    this.sides = sides;
   }
   // method that returns polgyon's perimeter
   perimeter() {
@@ -427,5 +429,17 @@ class Polygon {
   }
 }
 
+// REVIEW: Alternative solutions
+class Polygon {
+  constructor(sides) {
+    this.sides = sides;
+  }
+  perimeter() {
+    return this.sides.reduce(function add(a, b) {
+      return a + b;
+    });
+  }
+}
+
 let triangle = new Polygon([3, 4, 5]);
-console.log(triangle.perimeter())
+console.log(triangle.perimeter());
