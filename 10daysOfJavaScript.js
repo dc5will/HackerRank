@@ -405,3 +405,27 @@ const objects = [
 
 console.log(getCount(objects))
 
+/* HACK: Classes - Create a Polygon class that has the following properties:
+A constructor that takes an array of integer values describing the lengths of the polygon's sides.
+A perimeter() method that returns the polygon's perimeter.
+Locked code in the editor tests the Polygon constructor and the perimeter method.
+*/
+
+class Polygon {
+  // constructor that takes an array of integer values describing the length of polygon sides
+  constructor(sides) {
+    this.sides = sides
+  }
+  // method that returns polgyon's perimeter
+  perimeter() {
+    let sum = 0;
+    // loop through array of sides and sums all integers
+    for (let i = 0; i < this.sides.length; i++) {
+      sum = sum + this.sides[i];
+    }
+    return sum;
+  }
+}
+
+let triangle = new Polygon([3, 4, 5]);
+console.log(triangle.perimeter())
