@@ -82,11 +82,12 @@ First, print each vowel in s on a new line. The English vowels are a, e, i, o, a
 Second, print each consonant (i.e., non-vowel) in s on a new line in the same order as it appeared in s.
 */
 
-// create array for vowels, loop through s and check for vowels. console.log item if vowel. loop through again and only log items that arent vowels. 
+// create array for vowels, loop through s and check for vowels. console.log item if vowel. loop through again and only log items that arent vowels.
 
 function vowelsAndConsonants(s) {
   let vowels = ["a", "e", "i", "o", "u"];
-  for (let vowel of s) { // log out vowels
+  for (let vowel of s) {
+    // log out vowels
     if (vowels.includes(vowel)) {
       console.log(vowel);
     }
@@ -100,14 +101,14 @@ function vowelsAndConsonants(s) {
 
 // REVIEW: Better Solution - Only loops through once
 function vowelsAndConsonants1(s) {
-  const vowels = 'aeiou';
-  let consonants = '';
+  const vowels = "aeiou";
+  let consonants = "";
 
   for (let i = 0; i < s.length; i++) {
     if (vowels.includes(s[i])) {
       console.log(s[i]);
     } else {
-      consonants += s[i] + '\n';
+      consonants += s[i] + "\n";
     }
   }
   console.log(consonants.trim());
@@ -117,12 +118,14 @@ function vowelsAndConsonants2(s) {
   const vowels = "aeiou";
   let cons = "";
   for (let i = 0; i < s.length; i++) {
-      vowels.includes(s[i]) ? console.log(s[i]) : cons = cons.concat(s[i] + '\n');
+    vowels.includes(s[i])
+      ? console.log(s[i])
+      : (cons = cons.concat(s[i] + "\n"));
   }
   console.log(cons);
 }
 
-console.log(vowelsAndConsonants('javascriptloops')) 
+console.log(vowelsAndConsonants("javascriptloops"));
 /* returns 
 a
 a
@@ -155,27 +158,27 @@ Hint: You can get the letter at some index i in s using the syntax s[i] or s.cha
 
 function getLetter(s) {
   let letter = s[0];
-  switch(letter) {
-    case 'a':
-    case 'e':
-    case 'i':
-    case 'o':
-    case 'u':
-      return 'A';
-    case 'b':
-    case 'c':
-    case 'd':
-    case 'f':
-    case 'g':
-      return 'B';
-    case 'h':
-    case 'j':
-    case 'k':
-    case 'l':
-    case 'm':
-      return 'C';
-    default: 
-      return 'D';
+  switch (letter) {
+    case "a":
+    case "e":
+    case "i":
+    case "o":
+    case "u":
+      return "A";
+    case "b":
+    case "c":
+    case "d":
+    case "f":
+    case "g":
+      return "B";
+    case "h":
+    case "j":
+    case "k":
+    case "l":
+    case "m":
+      return "C";
+    default:
+      return "D";
   }
 }
 
@@ -184,25 +187,26 @@ function getLetter1(s) {
   let letter;
   // Write your code here
   switch (true) {
-      case 'aeiou'.includes(s[0]):
-          letter = 'A';
-          break;
-      case 'bcdfg'.includes(s[0]):
-          letter = 'B';
-          break;
-      case 'hjklm'.includes(s[0]):
-          letter = 'C';
-          break;
-      case 'npqrstvwxyz'.includes(s[0]):
-          letter = 'D';
-          break;
+    case "aeiou".includes(s[0]):
+      letter = "A";
+      break;
+    case "bcdfg".includes(s[0]):
+      letter = "B";
+      break;
+    case "hjklm".includes(s[0]):
+      letter = "C";
+      break;
+    case "npqrstvwxyz".includes(s[0]):
+      letter = "D";
+      break;
   }
   return letter;
 }
 
-let getLetter2 = s => 'DABC'[Number.parseInt(('aeioubcdfghjklm'.indexOf(s[0])/5)+1)]
+let getLetter2 = s =>
+  "DABC"[Number.parseInt("aeioubcdfghjklm".indexOf(s[0]) / 5 + 1)];
 
-console.log(getLetter('adfgt')) // return A
+console.log(getLetter("adfgt")); // return A
 
 // HACK: Arrays - Complete the getSecondLargest function in the editor below. It has one parameter: an array, num ,of n numbers. The function must find and return the second largest number in nums.
 
@@ -210,14 +214,15 @@ console.log(getLetter('adfgt')) // return A
 
 function getSecondLargest(nums) {
   let arr = Array.from(new Set(nums));
-  let sortedArr = arr.sort((a,b) => {
+  let sortedArr = arr.sort((a, b) => {
     return a - b;
-  })
-  return sortedArr[sortedArr.length-2]
+  });
+  return sortedArr[sortedArr.length - 2];
 }
 
 // REVIEW: Alternative solutions
-function getSecondLargest1(nums) { // O(n)
+function getSecondLargest1(nums) {
+  // O(n)
   let first = nums[0];
   let second;
   for (let i = 0; i < nums.length; i++) {
@@ -235,10 +240,10 @@ function getSecondLargest1(nums) { // O(n)
 }
 
 function getSecondLargest2(nums) {
-  return [...new Set(nums)].sort((a,b) => b-a)[1];
+  return [...new Set(nums)].sort((a, b) => b - a)[1];
 }
 
-console.log(getSecondLargest1([2,3,6,6,5])) // returns 5
+console.log(getSecondLargest1([2, 3, 6, 6, 5])); // returns 5
 
 /* HACK: Try, Catch, and Finally
 Complete the reverseString function; it has one parameter, s. You must perform the following actions:
@@ -256,8 +261,13 @@ Initial Approach: Wrap reverse string in a try block. Catch exceptions by loggin
 
 function reverseString(s) {
   try {
-    console.log(s.split('').reverse().join(''));
-  } catch(e) {
+    console.log(
+      s
+        .split("")
+        .reverse()
+        .join("")
+    );
+  } catch (e) {
     console.log(e.message);
     console.log(s);
   }
@@ -266,16 +276,19 @@ function reverseString(s) {
 // REVIEW: Alternative Solutions
 function reverseString1(s) {
   try {
-    s = s.split('').reverse().join('');
-  } catch(e) {
+    s = s
+      .split("")
+      .reverse()
+      .join("");
+  } catch (e) {
     console.log(e.message);
   } finally {
     console.log(s);
   }
 }
 
-console.log(reverseString("1234")) // returns 4321
-console.log(reverseString(Number(1234))) // throws error
+console.log(reverseString("1234")); // returns 4321
+console.log(reverseString(Number(1234))); // throws error
 
 /* HACK: Throw - Complete the isPositive function below. It has one integer parameter, a. If the value of a is positive, it must return the string YES. Otherwise, it must throw an Error according to the following rules:
 
@@ -284,11 +297,61 @@ If a is negative, throw an Error with message = Negative Error.
 */
 
 function isPositive(a) {
-  if (a === 0) throw Error('Zero Error');
-  if (a < 0) throw Error('Negative Error');
-  return 'YES'
+  if (a === 0) throw Error("Zero Error");
+  if (a < 0) throw Error("Negative Error");
+  return "YES";
+}
+
+// REVIEW: Alternative solutions
+function isPositive1(a) {
+  if (a > 0) {
+    return "YES";
+  } else {
+    throw a === 0 ? new Error("Zero Error") : new Error("Negative Error");
+  }
+}
+
+function isPositive2(a) {
+  if (a > 0) {
+    return "YES";
+  }
+  throw Error(a ? "Negative Error" : "Zero Error");
+  // a ? "this will excecute if it isn't zero" : "this will excecute if it's zero"
+}
+
+function isPositive3(a) {
+  try {
+    if (a < 0) {
+      throw "Negative Error";
+    } else if (a == 0) {
+      throw "Zero Error";
+    } else {
+      return "YES";
+    }
+  } catch (err) {
+    return err;
+  }
 }
 
 // console.log(isPositive(3)) // returns YES
 // console.log(isPositive(0)) // returns Zero Error
 // console.log(isPositive(-1)) // returns Negative Error
+
+/* HACK: Create a Rectangle Object - Complete the function in the editor. It has two parameters: a and b. It must return an object modeling a rectangle that has the following properties:
+
+length: This value is equal to a.
+width: This value is equal to b.
+perimeter: This value is equal to 2 * (a+b)
+area: This value is equal to a*b
+*/
+
+function Rectangle(a,b) {
+  return {
+    length: a,
+    width: b,
+    perimeter: 2 * (a + b),
+    area: a*b
+  }
+}
+
+console.log(Rectangle(4,5)) // 18, 20
