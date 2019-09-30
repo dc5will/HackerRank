@@ -363,7 +363,7 @@ function Rectangle(a,b) {
   this.perimeter = 2*(a + b);
 }
 
-console.log(Rectangle(4,5)) // 18, 20
+// FIXME: console.log(Rectangle(4,5)) // 18, 20
 
 // HACK: Count Objects - Complete the function in the editor. It has one parameter: an array, a , of objects. Each object in the array has two integer properties denoted by x and y. The function must return a count of all such objects o in array a that satisfy o.x == o.y.
 
@@ -379,4 +379,29 @@ function getCount(objects) {
   return count;
 }
 
+// REVIEW: Alternative solutions
+function getCount1(objects) {
+  return objects.filter(function(o){return o.x==o.y}).length
+}
+
+const getCount2 = objects => objects.filter(o => o.x==o.y).length;
+
+function getCount3(objects) {
+  let count = 0;
+  for (let o of objects) {
+    count += (o.x === o.y);
+  }
+  return count;
+}
+
+// array of objects used for getCount problem 
+const objects = [
+  {x:1, y:1},
+  {x:2, y:3},
+  {x:3, y:3},
+  {x:3, y:4},
+  {x:4, y:5}
+]
+
+console.log(getCount(objects))
 
