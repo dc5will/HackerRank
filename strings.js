@@ -13,7 +13,7 @@ Understand the problem = given 2 strings, determine the minumum number of charac
 Naive Approach = 
 
 */
-FIXME: 
+//FIXME: 
 function makeAnagrams(a, b) {
   // O(n*m) approach due to iterating through lengths of both inputs
   let count = 0;
@@ -55,7 +55,7 @@ function makeAnagrams1(a, b) {
 
 // console.log(makeAnagrams('cde','abc')); // returns 4
 console.log(
-  makeAnagrams2("fcrxzwscanmligyxyvym", "jxwtrhvujlmrpdoqbisbwhmgpmeoke")
+  makeAnagrams1("fcrxzwscanmligyxyvym", "jxwtrhvujlmrpdoqbisbwhmgpmeoke")
 ); // returns 30
 
 /* HACK: Alternating Characters - You are given a string containing characters A and B only. Your task is to change it into a string such that there are no matching adjacent characters. To do this, you are allowed to delete zero or more characters in the string.
@@ -83,4 +83,27 @@ console.log(alternatingCharacters("AAAA")); // returns 3
 console.log(alternatingCharacters("BBBBB")); // returns 4
 console.log(alternatingCharacters("ABABABAB")); // returns 0
 
+
+/* HACK: Given two strings, determine if they share a common substring. A substring may be as small as one character.
+
+For example, the words "a", "and", "art" share the common substring a. The words "be" and "cat" do not share a substring.
+
+Should return YES or NO based on whether the strings share a common substring.
+*/
+
+function twoStrings(s1, s2) {
+  let arr1 = s1.split('');
+  let arr2 = s2.split('');
+  for (let i = 0; i < arr1.length; i++) {
+    for (let j = 0; j < arr2.length; j++) {
+      if (arr1[i] === arr2[j]) {
+        return 'YES';
+      }
+    }
+  }
+  return 'NO';
+}
+
+console.log(twoStrings('hello', 'world')) // returns YES
+console.log(twoStrings('hi', 'world')) // returns NO
 
