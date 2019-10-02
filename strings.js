@@ -13,7 +13,7 @@ Understand the problem = given 2 strings, determine the minumum number of charac
 Naive Approach = 
 
 */
-//FIXME: 
+//FIXME:
 function makeAnagrams(a, b) {
   // O(n*m) approach due to iterating through lengths of both inputs
   let count = 0;
@@ -68,11 +68,12 @@ Naive Approach: set variable to count deletions. turn string into array. iterate
 
 */
 
-function alternatingCharacters(s) { // O(n) iterating through length of string/array, dependant on the input size
+function alternatingCharacters(s) {
+  // O(n) iterating through length of string/array, dependant on the input size
   let count = 0;
-  let array = s.split('');
+  let array = s.split("");
   for (let i = 0; i < array.length; i++) {
-    if (array[i] === array[i+1]) {
+    if (array[i] === array[i + 1]) {
       count++;
     }
   }
@@ -83,7 +84,6 @@ console.log(alternatingCharacters("AAAA")); // returns 3
 console.log(alternatingCharacters("BBBBB")); // returns 4
 console.log(alternatingCharacters("ABABABAB")); // returns 0
 
-
 /* HACK: Given two strings, determine if they share a common substring. A substring may be as small as one character.
 
 For example, the words "a", "and", "art" share the common substring a. The words "be" and "cat" do not share a substring.
@@ -92,18 +92,45 @@ Should return YES or NO based on whether the strings share a common substring.
 */
 
 function twoStrings(s1, s2) {
-  let arr1 = s1.split('');
-  let arr2 = s2.split('');
+  // O(n*n) still due to using include. Could be more optimized if I checked for smaller string to iterate through
+  let arr1 = s1.split("");
+  for (let i = 0; i < arr1.length; i++) {
+    if (s2.includes(arr1[i])) {
+      return "YES";
+    }
+  }
+  return "NO";
+}
+
+function twoStrings1(s1, s2) {
+  // O(n*n) complexity because the complexity depends linearly on input size of both parameters. Very inefficient and times out with very large inputs
+  let arr1 = s1.split("");
+  let arr2 = s2.split("");
   for (let i = 0; i < arr1.length; i++) {
     for (let j = 0; j < arr2.length; j++) {
       if (arr1[i] === arr2[j]) {
-        return 'YES';
+        return "YES";
       }
     }
   }
-  return 'NO';
+  return "NO";
 }
 
-console.log(twoStrings('hello', 'world')) // returns YES
-console.log(twoStrings('hi', 'world')) // returns NO
+// REVIEW: Alternative solutions
+function twoStrings2(s1, s2) {
+  let map = {};
+  for (let i of s1) {
+    map[i] = 1;
+  }
+  for (let i of s2) {
+    if (map[i]) return "YES";
+  }
+  return "NO";
+}
 
+function twoStrings3(s1, s2) {
+  return s1.split("").filter(l => s2.includes(l)).length > 0 ? "YES" : "NO";
+}
+
+console.log(twoStrings("hello", "world")); // returns YES
+console.log(twoStrings("hi", "world")); // returns NO
