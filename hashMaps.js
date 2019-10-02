@@ -20,9 +20,34 @@ Given the words in the magazine and the words in the ransom note, print Yes if h
 For example, the note is "Attack at dawn". The magazine contains only "attack at dawn". The magazine has all the right words, but there's a case mismatch. The answer is No.
 
 */
-
+// FIXME: review hash tables
 function checkMagazine(magazine, note) {
-
+  let map = {};
+  let replicable = true;
+  // iterate through each elem in magazine & store each elem in the variable i
+  for (let i of magazine) {
+    // if map[i] has not been initialized, it defaults to zero then one is added. if it has been initialized it simply adds one to its current value. This loop is going through all the words in magazine and keeping count of how many of them there were using the object called map.
+    map[i] = (map[i] || 0) + 1; 
+    console.log(map)
+  }
+  for (let i of note) {
+    // iterate through note and subtracts one for each element again initializing at 0 if needed
+    map[i] = (map[i] || 0) - 1;
+    console.log(map)
+  }
+  for (let i in map) {
+    // checks all the values in map to make sure that the ransom loop did not remove words from map to the point where we end up below zero. IF below zeo it means note had more occurrences of some word than magazine did.
+    if ( map[i] < 0) {
+      replicable = false;
+      break;
+    }
+  }
+  // ternary if true return 'Yes', if false return 'No'
+  console.log(replicable ? 'Yes' : 'No')
 }
 
-// console.log(checkMagazine())
+// REVIEW: Alternative Solution
+
+
+console.log(checkMagazine('give me one grand today night','give one grand today')) // returns Yes
+// console.log(checkMagazine('two times three is not four','two times two is four')) // returns No
