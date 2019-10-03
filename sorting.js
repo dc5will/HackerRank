@@ -47,3 +47,23 @@ function countSwaps(a) {
 }
 
 console.log(countSwaps([6,4,1])) // returns 3;
+
+// HACK: Mark and Toys - Given a list of prices and an amount to spend, what is the maximum number of toys Mark can buy? For example, if prices = [1,2,3,4]  and Mark has k = 7 to spend, he can buy items [1,2,3] for 6 , or [3,4] for 7 units of currency. He would choose the first group of 3 items.
+
+// Approach = sort prices array in ascending order. set variable for current total and for count. iterate through prices array & for each elem, add to current total and increment count. if condition comparing current total to k. if current total > k then return count
+
+function maximumToys(prices, k) {
+  let newArr = prices.sort(function(a,b) { return a-b});
+  let currentTotal = 0;
+  let count = 0;
+  for (let i = 0; i < newArr.length; i++) {
+    currentTotal += newArr[i];
+    count++;
+    if (currentTotal > k) {
+      return count-1;
+    }
+  }
+}
+
+console.log(maximumToys([1,2,3,4], 7)) // returns 3
+console.log(maximumToys([1,12,5,111,200,1000,10], 50)) // returns 4
