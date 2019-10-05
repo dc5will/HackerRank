@@ -53,3 +53,14 @@ function rotLeft2(a, d) {
 
 console.log(rotLeft([1,2,3,4,5], 4)) // returns 5 1 2 3 4
 
+
+// HACK: Simple Array Sum 
+function simpleArraySum(ar) {
+  let sum = 0;
+  for (let i = 0; i < ar.length; i++) {
+    sum += ar[i];
+  }
+  return sum;
+}
+
+console.log(simpleArraySum([1, 2, 3, 4, 10, 11])) // returns 31; 

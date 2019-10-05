@@ -6,18 +6,16 @@ minimumAbsoluteDifference has the following parameter(s):
 n: an integer that represents the length of arr
 arr: an array of integers
 
-// Approach = iterate through array and subtract Math.abs[i] - Math.abs[i-1]] and store it in a variable minDiff. have conditional check if current iteration is smaller than minDiff. If so, replace minDiff value. Return minDiff at end of loop.
+// Approach = sort array, iterate through array and subtract Math.abs[i] - [i-1]] and store it in a variable minDiff. have conditional check if current iteration is smaller than minDiff. If so, replace minDiff value. Return minDiff at end of loop.
 
 */
 
 function minimumAbsoluteDifference(arr) {
-  let sortedArray = arr.sort(function(a, b) { return Math.abs(a)-Math.abs(b)})
-  console.log(sortedArray)
-  let minDiff = Math.abs(sortedArray[0] - sortedArray[1])
-  // console.log('minDiff',minDiff)
-  for (let i = 0; i < sortedArray.length; i++) {
-    let diff = Math.abs(sortedArray[i] - sortedArray[i-1])
-    // console.log('diff', diff)
+  arr.sort(function(a, b) { return Math.abs(a)-Math.abs(b)})
+  // console.log(arr)
+  let minDiff = Math.abs(arr[0] - arr[1])
+  for (let i = 0; i < arr.length; i++) {
+    let diff = Math.abs(arr[i] - arr[i-1])
     if (diff < minDiff ) {
       minDiff = diff
     }
