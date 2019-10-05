@@ -55,7 +55,7 @@ console.log(rotLeft([1,2,3,4,5], 4)) // returns 5 1 2 3 4
 
 
 // HACK: Simple Array Sum 
-function simpleArraySum(ar) {
+function simpleArraySum(ar) { // O(n)
   let sum = 0;
   for (let i = 0; i < ar.length; i++) {
     sum += ar[i];
@@ -67,7 +67,7 @@ console.log(simpleArraySum([1, 2, 3, 4, 10, 11])) // returns 31;
 
 
 // HACK: Compare the Triplets
-function compareTriplets(a, b) {
+function compareTriplets(a, b) { // O(n)
   let countA = 0;
   let countB = 0;
   for (let i = 0; i < a.length; i++) {
@@ -81,3 +81,8 @@ function compareTriplets(a, b) {
 }
 
 console.log(compareTriplets([5,6,7],[3,6,10]));
+
+// NOTE: A Very Big Sum
+function aVeryBigSum(ar) {
+  
+}
