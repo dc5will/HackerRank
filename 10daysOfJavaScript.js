@@ -355,7 +355,7 @@ function RectangleObj(a, b) {
 }
 
 // REVIEW: Alternative Solutions
-function RectangleObj1 (a, b) {
+function RectangleObj1(a, b) {
   // NOTE: In JS, you can add properties to objects whenever you want. There's no need to define a length or width prop in advance. It is created when you assign it.
   this.length = a;
   this.width = b;
@@ -463,14 +463,16 @@ class Rectangle {
 /*
  *  Write code that adds an 'area' method to the Rectangle class' prototype
  */
-Rectangle.prototype.area = function() {  // prototype property allows us to add new properties or methods to object constructors
+Rectangle.prototype.area = function() {
+  // prototype property allows us to add new properties or methods to object constructors
   return this.w * this.h;
 };
 
 /*
  * Create a Square class that inherits from Rectangle and implement its class constructor
  */
-class Square extends Rectangle { // we use extends keyword to create a child class (subclass)
+class Square extends Rectangle {
+  // we use extends keyword to create a child class (subclass)
   constructor(sides) {
     super(sides, sides); // use super keyword to call functions on an object's parent
     // super(s);
@@ -490,29 +492,49 @@ if (
   console.log(rec.area());
   console.log(sqr.area());
 } else {
-  console.log('Wrong Answer');
+  console.log("Wrong Answer");
 }
 
 /* HACK: Template Literals
- * 
+ *
  * Determine the original side lengths and return an array:
  * - The first element is the length of the shorter side
  * - The second element is the length of the longer side
- * 
+ *
  * Parameter(s):
  * literals: The tagged template literal's array of strings.
  * expressions: The tagged template literal's array of expression values (i.e., [area, perimeter]).
- * 
+ *
  * NOTE: This question is just asking to convert a quadratic formula into code
  */
 
 function sides(literals, ...expressions) {
-    // ES6 allows destructuring of arrays into multiple variables
-    const [a, p] = expressions;
-    // Perform this operation only once and assign to variable
-    const root = Math.sqrt((p*p)-(16*a))
-    const s1 = (p + root)/4;
-    const s2 = (p - root)/4;
-    // s2 will always be smaller because of the (-/+) above
-    return ([s2, s1]);    
+  // ES6 allows destructuring of arrays into multiple variables
+  const [a, p] = expressions;
+  // Perform this operation only once and assign to variable
+  const root = Math.sqrt(p * p - 16 * a);
+  const s1 = (p + root) / 4;
+  const s2 = (p - root) / 4;
+  // s2 will always be smaller because of the (-/+) above
+  return [s2, s1];
+}
+
+// REVIEW: Alternative Solution
+function sides1(literals, ...expressions) {
+  let A = expressions[0];
+  let P = expressions[1];
+  var answers = [];
+  var s1 = (P+Math.sqrt(Math.pow(P, 2)-16*A))/4;
+  var s2 = (P-Math.sqrt(Math.pow(P, 2)-16*A))/4;
+  
+  answers.push(s1);
+  answers.push(s2);
+  
+  return answers.sort();
+}
+
+function sides2(literals, ...expressions) {
+  var [A, P] = expressions;
+  let constPart = Math.sqrt(P**2 - 16*A) / 4;
+  return [P/4 - constPart, P/4 + constPart];
 }
