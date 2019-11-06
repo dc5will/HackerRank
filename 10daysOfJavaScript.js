@@ -562,6 +562,7 @@ function modifyArray(nums) {
 // declarative solution
 const modifyArray1 = nums => nums.map(a => a * (2 + (a % 2)));
 
+
 // REVIEW: Best solution/Explanation
 
 //method 1
@@ -599,7 +600,7 @@ function modifyArray(nums) {
 
 //method 5
 function modifyArray(nums) {
-  return nums.map(n => (n = n % 2 == 0 ? n * 2 : n * 3));
+  return nums.map(n => (n = n % 2 == 0 ? n * 2 : n * 3)); // condition ? true : false;
 }
 
 // console.log(modifyArray([1, 2, 3, 4, 5])); // returns [3,4,9,8,15];
