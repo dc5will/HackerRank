@@ -559,7 +559,47 @@ function modifyArray(nums) {
   return result;
 }
 
-// functional solution
+// declarative solution
 const modifyArray1 = nums => nums.map(a => a * (2 + (a % 2)));
 
-console.log(modifyArray([1, 2, 3, 4, 5])); // returns [3,4,9,8,15];
+// REVIEW: Best solution/Explanation
+
+//method 1
+function modifyArray(nums) {
+  let something = function(n) {
+    if (n % 2 == 0) return n * 2;
+    else return n * 3;
+  };
+  let newArray = nums.map(something);
+  return newArray;
+}
+
+// method 2
+function modifyArray(nums) {
+  let something = function(n) {
+    let a = n % 2 == 0 ? n * 2 : n * 3;
+    return a;
+  };
+  let newArray = nums.map(something);
+  return newArray;
+}
+
+//method 3\
+function modifyArray(nums) {
+  let something = n => (n = n % 2 == 0 ? n * 2 : n * 3);
+  let newArray = nums.map(something);
+  return newArray;
+}
+
+//method 4
+function modifyArray(nums) {
+  let newArray = nums.map(n => (n = n % 2 == 0 ? n * 2 : n * 3));
+  return newArray;
+}
+
+//method 5
+function modifyArray(nums) {
+  return nums.map(n => (n = n % 2 == 0 ? n * 2 : n * 3));
+}
+
+// console.log(modifyArray([1, 2, 3, 4, 5])); // returns [3,4,9,8,15];
