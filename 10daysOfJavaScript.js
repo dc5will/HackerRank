@@ -524,17 +524,42 @@ function sides1(literals, ...expressions) {
   let A = expressions[0];
   let P = expressions[1];
   var answers = [];
-  var s1 = (P+Math.sqrt(Math.pow(P, 2)-16*A))/4;
-  var s2 = (P-Math.sqrt(Math.pow(P, 2)-16*A))/4;
-  
+  var s1 = (P + Math.sqrt(Math.pow(P, 2) - 16 * A)) / 4;
+  var s2 = (P - Math.sqrt(Math.pow(P, 2) - 16 * A)) / 4;
+
   answers.push(s1);
   answers.push(s2);
-  
+
   return answers.sort();
 }
 
 function sides2(literals, ...expressions) {
   var [A, P] = expressions;
-  let constPart = Math.sqrt(P**2 - 16*A) / 4;
-  return [P/4 - constPart, P/4 + constPart];
+  let constPart = Math.sqrt(P ** 2 - 16 * A) / 4;
+  return [P / 4 - constPart, P / 4 + constPart];
 }
+
+/* HACK: Arrow Functions
+ * Modify and return the array so that all even elements are doubled and all odd elements are tripled.
+ *
+ * Parameter(s):
+ * nums: An array of numbers.
+ */
+
+function modifyArray(nums) {
+  // Imperative solution
+  let result = [];
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] % 2 === 0) {
+      result.push(nums[i] * 2);
+    } else {
+      result.push(nums[i] * 3);
+    }
+  }
+  return result;
+}
+
+// functional solution
+const modifyArray1 = nums => nums.map(a => a * (2 + (a % 2)));
+
+console.log(modifyArray([1, 2, 3, 4, 5])); // returns [3,4,9,8,15];
