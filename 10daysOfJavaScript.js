@@ -345,7 +345,7 @@ perimeter: This value is equal to 2 * (a+b)
 area: This value is equal to a*b
 */
 
-function Rectangle(a, b) {
+function RectangleObj(a, b) {
   return {
     length: a,
     width: b,
@@ -355,7 +355,7 @@ function Rectangle(a, b) {
 }
 
 // REVIEW: Alternative Solutions
-function Rectangle(a, b) {
+function RectangleObj1 (a, b) {
   // NOTE: In JS, you can add properties to objects whenever you want. There's no need to define a length or width prop in advance. It is created when you assign it.
   this.length = a;
   this.width = b;
@@ -363,7 +363,7 @@ function Rectangle(a, b) {
   this.perimeter = 2 * (a + b);
 }
 
-// FIXME: console.log(Rectangle(4,5)) // 18, 20
+// FIXME: console.log(RectangleObj(4,5)) // 18, 20
 
 // HACK: Count Objects - Complete the function in the editor. It has one parameter: an array, a , of objects. Each object in the array has two integer properties denoted by x and y. The function must return a count of all such objects o in array a that satisfy o.x == o.y.
 
@@ -430,7 +430,7 @@ class Polygon {
 }
 
 // REVIEW: Alternative solution
-class Polygon {
+class Polygon1 {
   constructor(sides) {
     this.sides = sides;
   }
@@ -451,6 +451,7 @@ Create a Square class that satisfies the following:
 It is a subclass of Rectangle.
 It contains a constructor and no other methods.
 It can use the Rectangle class' area method to print the area of a Square object.
+
 */
 
 class Rectangle {
@@ -462,15 +463,32 @@ class Rectangle {
 /*
  *  Write code that adds an 'area' method to the Rectangle class' prototype
  */
-Rectangle.prototype.area = function() {
-  return (this.w * this.h);
+Rectangle.prototype.area = function() {  // prototype property allows us to add new properties or methods to object constructors
+  return this.w * this.h;
 };
 
 /*
  * Create a Square class that inherits from Rectangle and implement its class constructor
  */
-class Square extends Rectangle {
+class Square extends Rectangle { // we use extends keyword to create a child class (subclass)
   constructor(sides) {
-    super(sides, sides);
+    super(sides, sides); // use super keyword to call functions on an object's parent
+    // super(s);
+    // this.h = s;
+    // this.w = s;
   }
+}
+
+// Test for Inheritance Problem
+if (
+  JSON.stringify(Object.getOwnPropertyNames(Square.prototype)) ===
+  JSON.stringify(["constructor"])
+) {
+  const rec = new Rectangle(3, 4);
+  const sqr = new Square(3);
+
+  console.log(rec.area());
+  console.log(sqr.area());
+} else {
+  console.log('Wrong Answer');
 }
